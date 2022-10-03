@@ -1,3 +1,75 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base{
+    body{
+     @apply overflow-x-hidden
+        /* @apply bg-gray-100 text-black m-0; */
+    }
+    *{
+        scroll-behavior:smooth;
+        padding:0px;
+        margin:0px;
+        box-sizing:border-box;
+    }
+}
+@layer components{
+    nav{
+        @apply fixed top-0 px-4 py-4 transition-all z-50  
+    }
+    .active{
+        color: #ADDDD0;
+        border-bottom: 3px solid #ADDDD0
+    }
+    .hero-wrapper{
+        @apply
+        w-full
+        h-[20rem]
+        md:h-[20rem]
+       
+        -z-0
+       
+    }
+    .desc-wrapper{
+        @apply
+        w-screen  
+        max-w-[50rem] 
+        absolute 
+        min-w-[20vw] 
+         bg-[#4c4c4c60]
+        md:left-auto 
+        lg:left-[3rem]
+        text-[#ffffff]  
+         flex flex-col gap-4 p-5 rounded
+        bottom-[2rem]
+    }
+    .hero-btn{
+       @apply flex justify-center items-center 
+                rounded-full
+                font-bold
+                px-4
+                py-2
+                text-[#525151]
+               text-center w-[10rem] h-[3rem] transition-all
+    }
+    .section-arrow{
+        @apply   
+        absolute 
+        top-0 
+        bottom-0  
+        z-40 
+        m-auto h-10 w-10
+        cursor-pointer 
+        opacity-0 
+        transition 
+        hover:scale-125 
+        group-hover:opacity-100
+        bg-slate-800
+        rounded-full
+        text-cyan-50
+
+    }
+    
+}
+
