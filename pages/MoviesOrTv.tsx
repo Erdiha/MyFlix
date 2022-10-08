@@ -4,9 +4,10 @@ import Header from '../components/Header';
 import Image from 'next/image'
 import { useRecoilState } from 'recoil';
 import ModalCard from '../components/ModalCard';
- import {  IconButton } from"@material-ui/core";
-import TextField from "@material-ui/core/TextField";
-import { SearchOutlined } from '@material-ui/icons';
+ import {SearchOutlined, IconButton } from"@mui/material";
+import TextField from "@mui/material/TextField";
+
+
 function MoviesOrTv() {
 
     const [resData, setResData]: any = useState([]);
@@ -21,12 +22,6 @@ function MoviesOrTv() {
     });
     const [searchTerm, setSearchTerm] = useState("");
     let flixName: string;
-    // const handleSearch = (e: any) => {
-    //    /// setFetchAgain(true);
-    //     const searchWord = e.target.value;
-    //     setSearchTerm(searchWord);
-    // };
-    
     useEffect(() => {
 
             async function getAll() {  
