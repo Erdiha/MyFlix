@@ -1,5 +1,5 @@
-import React,{useState,useEffect,useRef} from 'react';
-import { useRecoilValue,useRecoilState } from 'recoil';
+import React,{useState,useEffect} from 'react';
+import {useRecoilState } from 'recoil';
 import useAuth,{
   movieState, movieID, cardImagesUrl, api, GENRE_URL,
   handleLongSentences, addOrRemove,playTrailer, MAIN_URL, generateGenre, textadd
@@ -10,9 +10,8 @@ import {
   setDoc
 } from 'firebase/firestore';
 import { db } from '../fbAuth';
-import { Movie, Genre } from '../data/types';
+import { Movie } from '../data/types';
 import { TiTick, TiPlus } from 'react-icons/ti';
-import ReactPlayer from 'react-player'
 import VideoPlayer from './VideoPlayer';
 
 function ModalCard() {
@@ -75,7 +74,7 @@ function ModalCard() {
   const handleGenre = (item: []) => {
    getGenre.map((x: any,index:any) => {
      item.map((y: any ) => {
-       const commas = index === getGenre.length ? "" : ",";
+       const commas = index === getGenre?.length ? "" : ",";
        x.id === y && flixGenre.push(<p>{`${x.name}${ commas}`}</p>)
     })});
    return flixGenre

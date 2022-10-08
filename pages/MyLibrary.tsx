@@ -1,5 +1,5 @@
 import React from 'react'
-import useAuth,{ cardImagesUrl, movieID, movieState,userLibrary,handleRating,handleLongSentences } from '../data/data';
+import useAuth,{ cardImagesUrl, movieID, movieState,userLibrary,handleRating } from '../data/data';
 import Header from '../components/Header';
 import Image from 'next/image'
 import { useRecoilState } from 'recoil';
@@ -19,7 +19,7 @@ function MyLibrary() {
           <h1 className='p-5 absolute top-[8rem] md:top-[10rem] md:p-10
            text-white text-xl ml-[4rem] fotn bold md:text-[2rem]'>My Library</h1>
           {
-              lib.length > 0 ? (
+              lib?.length > 0 ? (
                   <div id='movieSlide' className='flex   transition-all  p-3 mt-[11rem]
                     duration-300 ease-in-out   items-center  flex-wrap gap-2 justify-center md:gap-5 md:p-10 md:mt-[14rem]
                     overflow-x-scroll scrollbar-hide  '>

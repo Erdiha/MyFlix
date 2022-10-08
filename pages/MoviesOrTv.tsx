@@ -15,8 +15,6 @@ function MoviesOrTv() {
     const [displayModal, setDisplayModal] = useRecoilState(movieState);
     const [getMovie, setMovie] = useRecoilState(movieID);
     const [movieOrTv, setmovieOrTv] = useRecoilState(MorT);
-    const [search, setsearch] = useState();
-    const [fetchAgain, setFetchAgain] = useState(false);
     const [select, setSelect] = useState({
         tv: false,
         movie: false
