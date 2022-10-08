@@ -11,7 +11,7 @@ import {
 } from 'firebase/firestore';
 import { db } from '../fbAuth';
 import { Movie, Genre } from '../data/types';
-import { TiTick, TiPlus } from 'react-icons/Ti';
+import { TiTick, TiPlus } from 'react-icons/ti';
 import ReactPlayer from 'react-player'
 import VideoPlayer from './VideoPlayer';
 
