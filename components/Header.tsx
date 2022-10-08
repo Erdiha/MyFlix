@@ -12,14 +12,11 @@ function Header() {
   useEffect(() => {
     const scrll = () => {
     window.scrollY > 0?setScrolling(true):setScrolling(false);
-      
     };
     window.addEventListener('scroll', scrll);
     return () => { 
       window.removeEventListener('scroll', scrll);
     }
-	 
-  
 },[])
  
   const handleClick = (e: any) => {
