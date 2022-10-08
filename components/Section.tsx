@@ -1,24 +1,24 @@
-import React, { useEffect,useRef} from 'react'
-import { Movie } from '../data/types';
+import React, { useRef,useState} from 'react'
 import {ChevronRightIcon,ChevronLeftIcon} from '@heroicons/react/outline'
-import Card from '../components/Card';
 import Image from 'next/image'
-import { cardImagesUrl, movieGenres } from '../data/data';
-import { networkInterfaces } from 'os';
-
- interface IGenre   {
-     flixes: [Movie],
-     title:string
-}
+import useAuth , { cardImagesUrl,userLibrary,movieState,movieID,IGenre,handleLongSentences,handleRating } from '../data/data';
+import { useRecoilValue,useRecoilState } from 'recoil';
+import ModalCard from './ModalCard';
+import { orange } from '@mui/material/colors';
 
 function Section({ flixes, title }: IGenre) {
     const slideRef = useRef<HTMLDivElement>(null);
+    const [displayModal, setDisplayModal] = useRecoilState(movieState);
+    const [getMovie, setMovie] = useRecoilState(movieID);
+    
+
     let w:any;
     const handleArrows = (dir: string) => {
         let movieSections: any;
+        
         if (typeof document !== "undefined") {
-            movieSections = document.getElementById('slide-image')! as HTMLImageElement || null;
-            w = movieSections.clientWidth + 10;
+            movieSections = document.getElementById('movieSlide')! as HTMLImageElement || null;
+            w = movieSections.clientWidth - 20;
         };
         if (slideRef.current) {
             const { scrollLeft } = slideRef.current;
@@ -26,32 +26,47 @@ function Section({ flixes, title }: IGenre) {
             slideRef.current.scrollTo({left: scrollTo, behavior:"smooth"});
         };
     };
+    console.log("this is the all data", flixes);
+   
     return (
-        <div  className= ' space-y-1 md:space-y-2 h-50'>
-            <h2 className=' cursor-pointer text-sm flex md:text-2xl 
-            mt-7
+        <div className=' space-y-1 md:space-y-2 h-50'>
+            <h2 className=' cursor-pointer text-[1rem] flex md:text-2xl 
+            mt-7 text-white
            ml-2 md:mt-10
             lg:text-3xl'>{ title}</h2>
             <div className='group relative md:-ml-2'>
               
                 <ChevronLeftIcon onClick={()=>handleArrows("L")} className=' section-arrow left-6'/>
-                    <div ref={slideRef} id='movieSlide'  className='flex scroll scroll-smooth  transition-all duration-300  whitespace-nowrap items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2'>
-                        {flixes.map((flix) => 
-                        (<div   key={flix.id} className='relative space-y-5 h-28 min-w-[180px] cursor-pointer transition-all duration-300 ease-out md:h-36 md:min-w-[260px] md:hover:scale-105'>
-                            <Image
+                <div ref={slideRef} id='movieSlide' className='flex scroll scroll-smooth ml-2  transition-all 
+                    duration-300 ease-in-out  whitespace-nowrap items-center space-x-0.5 py-3 gap-3
+                    overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-4'>
+                        {flixes &&flixes.map((flix) => 
+                        (<div onClick={() => {
+                            setMovie(flix);
+                            setDisplayModal(true);
+                        }} key={flix.id} className='relative h-[12rem]  min-w-[130px] cursor-pointer transition-all 
+                        duration-300 ease-out md:h-[20rem] md:min-w-[200px] md:hover:scale-105'>
+                           
+                            <Image  
                                 id='slide-image'
-                                className="object-cover"
+                                className="object-cover cover "
                                 layout='fill'
-                                src={`${cardImagesUrl + flix.backdrop_path || flix.poster_path}`}
+                                src={`${flix.poster_path? cardImagesUrl+flix.poster_path: "http://via.placeholder.com/1080x1580" }`}
                             />
+                          
+                            <p className={`absolute h-8 w-8 md:w-10 md:h-10  text-black text-sm
+                            bottom-[-10px] right-[2rem] rounded-full border-2
+                            ${handleRating(flix)! > 50 ? (handleRating(flix)! > 80 ? "text-green-500 border-green-500"
+                                    : "text-orange-300 border-orange-300") : "text-red-600 border-red-600"}
+                             bg-slate-900 items-center flex justify-center md:font-bold`}>{handleRating(flix)+"%"}</p>
                         </div>)
                         )}
                 </div>
                 <ChevronRightIcon onClick={() => handleArrows("R")} className="section-arrow  
                 right-6"/>
-         
+            
             </div>
-       
+      
         </div>
     );
 };

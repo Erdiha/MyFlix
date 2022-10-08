@@ -4,14 +4,13 @@
 
 @layer base{
     body{
-     @apply overflow-x-hidden
+     @apply overflow-x-hidden scrollbar-hide transition-all
+      ease-in-out duration-300;
         /* @apply bg-gray-100 text-black m-0; */
     }
     *{
-        scroll-behavior:smooth;
-        padding:0px;
-        margin:0px;
-        box-sizing:border-box;
+      @apply  scroll-smooth p-0 m-0 box-border ;
+       
     }
 }
 @layer components{
@@ -24,13 +23,13 @@
     }
     .hero-wrapper{
         @apply
-        w-full
-        h-[20rem]
-        md:h-[20rem]
-       
-        -z-0
-       
+       h-[70vh] w-screen 
     }
+    .imgContainer{      
+    -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, 
+    from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+  }
+    
     .desc-wrapper{
         @apply
         w-screen  
@@ -70,6 +69,51 @@
         text-cyan-50
 
     }
-    
+    .signin-background{
+        @apply -z-20 opacity-[0.7]
+    }
+    .icon{
+        @apply w-[3.5rem] h-[3rem]
+         absolute 
+        text-[#ADDDD0]
+        text-4xl font-bold outline-rose-600 outline
+        pr-2 
+        text-center indent-1
+        left-[1rem] top-[5rem]
+        md:left-[4rem]
+    }
+    .input{
+        @apply p-2
+       w-full
+        rounded
+        text-center
+        text-black/90
+       caret-black
+       font-semibold  
+       outline-none
+       focus:bg-slate-300
+    }
+    .add-tick{
+        @apply h-6 w-6 
+    }
+    .add-alert{
+     @apply   absolute w-[6rem] 
+     hidden items-center h-[2rem] 
+     bottom-9 right-[8%] 
+     justify-center
+     text-sm
+     bg-slate-800
+     rounded
+     transition-all
+     md:right-[20%]
+     md:w-[9rem]
+     md:h-[3rem]
+     md:text-[20px]
+     md:bottom-8
+     md:p-1
+    }
+    .close-button{
+        @apply absolute top-[1rem] right-[1rem]
+    }
 }
 

@@ -1,9 +1,24 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
-import 'tailwindcss/tailwind.css'
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
+import 'tailwindcss/tailwind.css';
+import { AuthProvider } from '../data/data';
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  //wrap whole app with auth to prevent unprotected url
+  return (
+    <RecoilRoot>
+      <AuthProvider>
+        <Component {...pageProps} />
+      </AuthProvider>
+    </RecoilRoot>
+  )
 }
 
 export default MyApp

@@ -1,43 +1,57 @@
-import type { NextPage,GetServerSideProps } from 'next'
+import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
-import { useEffect } from 'react';
 import Header from '../components/Header'
 import Hero from '../components/Hero'
-import { all_data,titles } from '../data/data';
-import { Movie, Genre, Element, Iprops } from '../data/types';
+import { all_data,movieState,titles,userLibrary } from '../data/data';
+import { Iprops, Movie } from '../data/types';
 import Section from '../components/Section';
+import useAuth from '../data/data';
+import ModalCard from '../components/ModalCard';
+import { useRecoilState } from 'recoil';
 
- 
 
 const Home = (props: (Iprops)) => {
-  
- const movieGenres = [props.actionMovies,
-   props.comedyMovies, props.horrorMovies,
-   props.topRated, props.trendingNow,
-  props.romanceMovies, props.documentaries]
-  const sec:any = [];
+  const { isLoading,currentUser } = useAuth();
+  const [displayModal, setDisplayModal] = useRecoilState(movieState);
+  const movieGenres = [props.actionMovies,
+  props.comedyMovies, props.horrorMovies,
+  props.topRated, props.trendingNow,
+    props.romanceMovies, props.documentaries];
+  const lib = userLibrary(currentUser?.uid)
+
+  const sec: any = [];
+  let lower = 0;
+  let upper = 0;
+  if (lib.length > 0) {
+    lower = 1;
+      sec.push(<Section key={0} title ={titles[7]}  flixes={lib} />)
+  } 
+
   const sectionStrips = () => {
-    for (let i = 0; i < 7; i++){
-        sec.push(<Section  title ={titles[i]}  flixes={movieGenres[i]} />)
+    for (let i = lower; i < 8; i++){
+        sec.push(<Section key={i} title ={titles[i-1]}  flixes={movieGenres[i-1]} />)
     }
+   
     return sec;
-    
   };
-  return (
-    <div className="relative h-screen w-screen
-    bg-gradient-to-b 
+  return (!isLoading ? <div className="relative h-screen w-screen
+      
      ">
       <Head>
         <title>MyFlix</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
    <Header/>
-      <main >
-        <Hero netflixOriginals={props.netflixOriginals} />
-        {sectionStrips()}
-      </main>
-    </div>
-  )
+      <main className='relative w-screen   bg-gradient-to-t from-[rgb(173,221,208)] to-black pb-24 lg:space-y-24 lg:pl-1 ' >
+      
+      <Hero netflixOriginals={props.netflixOriginals} />
+      {sectionStrips()}
+      
+    </main>
+    {displayModal && <ModalCard/>}
+    
+  </div>: <p></p>
+    )
+  
 }
 
 export default Home
