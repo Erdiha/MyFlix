@@ -3,8 +3,6 @@ import {ChevronRightIcon,ChevronLeftIcon} from '@heroicons/react/outline'
 import Image from 'next/image'
 import useAuth , { cardImagesUrl,userLibrary,movieState,movieID,IGenre,handleLongSentences,handleRating } from '../data/data';
 import { useRecoilValue,useRecoilState } from 'recoil';
-import ModalCard from './ModalCard';
-import { orange } from '@mui/material/colors';
 
 function Section({ flixes, title }: IGenre) {
     const slideRef = useRef<HTMLDivElement>(null);

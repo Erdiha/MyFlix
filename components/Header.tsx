@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import account from '../pages/account';
-import useAuth from '../data/data';
 import { MorT } from '../data/data';
 import { useRecoilValue,useRecoilState } from 'recoil';
 
