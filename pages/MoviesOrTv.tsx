@@ -4,8 +4,8 @@ import Header from '../components/Header';
 import Image from 'next/image'
 import { useRecoilState } from 'recoil';
 import ModalCard from '../components/ModalCard';
- import {  TextField, IconButton } from '@material-ui/core';
-
+ import {  IconButton } from"@material-ui/core";
+import TextField from "@material-ui/core/TextField";
 import { SearchOutlined } from '@material-ui/icons';
 function MoviesOrTv() {
 
