@@ -6,7 +6,6 @@ import { collection, deleteDoc, DocumentData, onSnapshot, doc, setDoc } from 'fi
 import { db } from '../fbAuth';
 import { useRouter } from 'next/router';
 import { deleteUser } from 'firebase/auth';
-import { async } from '@firebase/util';
 function account() {
   const router = useRouter();
   const { deleteuser, currentUser,isLoading } = useAuth();

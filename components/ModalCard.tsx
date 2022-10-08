@@ -114,18 +114,20 @@ function ModalCard() {
           }
           <div className='flex flex-row absolute bottom-8 space-x-3 left-10'>
             
-            <button onClick={() => setPTrailer((prev) => !prev)}
+            <button onClick={() => setPTrailer((prev:any) => !prev)}
               className='hover:bg-red-300 hover:scale-[1.05] border-2
              border-gray-900  h-10 w-20 
                   rounded font-bold bg-[#b0dcd0] '>
               {`${pTrailer ? "Close" : "Play"}`}</button>
-            <button onClick={addMoviesToLibrary} 
+            <>
+               <button onClick={addMoviesToLibrary} 
               className={`hover:md:bg-red-300 flex justify-center text-center md:w-[8rem] ${pTrailer&&"text-slate-100"}
               items-center text-[1rem] font-bold h-10 w-24 rounded-full border${pTrailer ? "border-red-100": " border-red-600"}
               font-bold]`}>
               {!movieExists ? (<TiPlus className='add-tick' />) : (<TiTick className='add-tick' />)}
               {textAdd}
             </button>
+            </>
            
           </div>
           <p className='add-alert  text-slate-300'>{ addOrDelete}</p>
