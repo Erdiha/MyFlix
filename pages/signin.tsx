@@ -10,7 +10,7 @@ const Signin = () => {
     const [userLogin,setUserLogin]= useState(false)
     const { logIn } = useAuth();
     //react hook form validation
-    const { register, handleSubmit, watch, formState: { errors } } = useForm<Iinput>();
+    const { register, handleSubmit, formState: { errors } } = useForm<Iinput>();
     //when the user clicked button to login, do auth
     const onSubmit: SubmitHandler<Iinput> = async (data) => {
         userLogin && await logIn(data.email, data.password);

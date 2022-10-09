@@ -1,6 +1,5 @@
 
 import React, {
-  useMemo,
   useState,
   createContext,
   useContext,
@@ -14,17 +13,11 @@ import {
   signOut,
   User,
   deleteUser,
-  getAuth,
-  updatePassword
 } from "firebase/auth";
 import { useRouter } from 'next/router';
 import {auth} from '../fbAuth'
-import { async } from "@firebase/util";
-import { userInfo } from "os";
-import Signin from '../pages/signin';
-import Signup from '../pages/signup';
-import { atom, Snapshot } from 'recoil';
-import { collection,deleteDoc,DocumentData,onSnapshot,doc,setDoc} from 'firebase/firestore';
+import { atom } from 'recoil';
+import { collection,deleteDoc,DocumentData,onSnapshot,doc} from 'firebase/firestore';
 import { Movie } from "./types";
 import { db } from "../fbAuth";
 

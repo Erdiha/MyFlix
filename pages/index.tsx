@@ -20,10 +20,10 @@ const Home = (props: (Iprops)) => {
 
   const sec: any = [];
   let lower = 0;
-  // if (lib?.length > 0) {
-  //   lower = 1;
-  //     sec.push(<Section key={0} title ={titles[7]}  flixes={lib} />)
-  // } 
+  if (lib?.length > 0) {
+    lower = 1;
+      sec.push(<Section key={0} title ={titles[7]}  flixes={lib} />)
+  } 
 
   const sectionStrips = () => {
     for (let i = lower; i < 8; i++){
@@ -41,11 +41,11 @@ const Home = (props: (Iprops)) => {
    <Header/>
       <main className='relative w-screen   bg-gradient-to-t from-[rgb(173,221,208)] to-black pb-24 lg:space-y-24 lg:pl-1 ' >
       
-      <Hero netflixOriginals={props.netflixOriginals} />
-      {sectionStrips()}
+      {/* <Hero netflixOriginals={props.netflixOriginals} /> */}
+      {/* {sectionStrips()} */}
       
     </main>
-    {displayModal && <ModalCard/>}
+    {/* {displayModal && <ModalCard/>} */}
     
   </div>: <p></p>
     )

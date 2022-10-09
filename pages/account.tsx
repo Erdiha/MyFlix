@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import Link from 'next/link';
 import useAuth, { userLibrary } from '../data/data';
 function account() {
-  const {  currentUser } = useAuth();
+  const {  currentUser} = useAuth();
   const itemsCount = userLibrary(currentUser?.uid);
   const { logout } = useAuth();
    const handleLogout =  async ()=> {
@@ -28,7 +28,7 @@ function account() {
             <p>password: ******</p>
             <hr className="border-gray-400" />
             <br />
-            <p>There are { itemsCount?.length} movies & Tv shows in your Libarary</p>
+            <p>There are { itemsCount.length} movies & Tv shows in your Libarary</p>
           
           </div>
           <button onClick={handleLogout}
