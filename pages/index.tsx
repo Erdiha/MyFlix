@@ -21,10 +21,10 @@ const Home = (props: (Iprops)) => {
 
   const sec: any = [];
   let lower = 0;
-  if (lib?.length > 0) {
-    lower = 1;
-      sec.push(<Section key={0} title ={titles[7]}  flixes={lib} />)
-  } 
+  // if (lib?.length > 0) {
+  //   lower = 1;
+  //     sec.push(<Section key={0} title ={titles[7]}  flixes={lib} />)
+  // } 
 
   const sectionStrips = () => {
     for (let i = lower; i < 8; i++){
