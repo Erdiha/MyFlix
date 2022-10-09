@@ -30,13 +30,13 @@ export interface Element{
 }
 
 export interface Iprops{
-    netflixOriginals:  [Movie], 
-    trendingNow:  [Movie],
-    topRated:  [Movie],
-    actionMovies:   [Movie],
-    comedyMovies:  [Movie],
-      horrorMovies:  [Movie],
-      romanceMovies:  [Movie],
-      documentaries:  [Movie],
+    netflixOriginals:  Movie[], 
+    trendingNow:  Movie[],
+    topRated:  Movie[],
+    actionMovies:   Movie[],
+    comedyMovies:  Movie[],
+      horrorMovies:  Movie[],
+      romanceMovies:  Movie[],
+      documentaries:  Movie[],
 }
 

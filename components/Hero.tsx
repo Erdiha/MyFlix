@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { FaPlayCircle } from "react-icons/fa";
 import { useRecoilState } from 'recoil';
 interface IOriginals{
-    netflixOriginals:[Movie]
+    netflixOriginals:Movie[]
 }
 function Hero({ netflixOriginals }: IOriginals) {
   const [heroMovie, setHeroMovie]: any = useState<Movie | null>(null);
