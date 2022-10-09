@@ -41,11 +41,11 @@ const Home = (props: (Iprops)) => {
    <Header/>
       <main className='relative w-screen   bg-gradient-to-t from-[rgb(173,221,208)] to-black pb-24 lg:space-y-24 lg:pl-1 ' >
       
-      <Hero netflixOriginals={props.netflixOriginals} />
-      {/* {sectionStrips()} */}
+      {/* <Hero netflixOriginals={props.netflixOriginals} /> */}
+      {sectionStrips()}
       
     </main>
-    {/* {displayModal && <ModalCard/>} */}
+    {displayModal && <ModalCard/>}
     
   </div>: <p></p>
     )
