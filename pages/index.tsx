@@ -45,7 +45,7 @@ const Home = (props: (Iprops)) => {
       {sectionStrips()}
       
     </main>
-    {displayModal && <ModalCard/>}
+    {/* {displayModal && <ModalCard/>} */}
     
   </div>: <p></p>
     )

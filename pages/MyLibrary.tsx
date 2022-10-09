@@ -46,7 +46,7 @@ function MyLibrary() {
                         )}
               </div>):(<p className='text-[1rem] md:text[2rem]'>Add Movies to Display Here</p>) 
           }
-           {displayModal && <ModalCard/>}
+           {/* {displayModal && <ModalCard/>} */}
           </>
   
  </div>

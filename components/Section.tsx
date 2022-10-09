@@ -5,7 +5,8 @@ import useAuth , { cardImagesUrl,userLibrary,movieState,movieID,handleLongSenten
 import { useRecoilValue,useRecoilState } from 'recoil';
 import { DocumentData } from 'firebase/firestore';
 import { Movie } from '../data/types';
- export interface IGenre   {
+
+  interface IGenre   {
      flixes: Movie[] | DocumentData[] |null,
      title:string
 }

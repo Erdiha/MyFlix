@@ -12,13 +12,13 @@ function Hero({ netflixOriginals }: IOriginals) {
   const [displayModal, setDisplayModal] = useRecoilState(movieState);
   const [getMovie,setMovie] = useRecoilState(movieID);
 
-  // useEffect(() => {
-  //   const min = 0;
-  //   const max = netflixOriginals?.length - 1;
-  //   const rand = Math.floor(Math.random() * (max - min + 1)) + min;
-  //   setHeroMovie(netflixOriginals[rand]);
+  useEffect(() => {
+    const min = 0;
+    const max = netflixOriginals?.length - 1;
+    const rand = Math.floor(Math.random() * (max - min + 1)) + min;
+    setHeroMovie(netflixOriginals[rand]);
    
-  // }, [netflixOriginals]);  
+  }, [netflixOriginals]);  
   return (
     <div className='flex justify-center 
            lg:h-[65vh]
