@@ -1,8 +1,8 @@
-import React, { useRef} from 'react'
+import React, { useRef,useState} from 'react'
 import {ChevronRightIcon,ChevronLeftIcon} from '@heroicons/react/outline'
 import Image from 'next/image'
-import   { cardImagesUrl,movieState,movieID,IGenre,handleRating } from '../data/data';
-import { useRecoilState } from 'recoil';
+import useAuth , { cardImagesUrl,userLibrary,movieState,movieID,IGenre,handleLongSentences,handleRating } from '../data/data';
+import { useRecoilValue,useRecoilState } from 'recoil';
 
 function Section({ flixes, title }: IGenre) {
     const slideRef = useRef<HTMLDivElement>(null);
@@ -12,10 +12,10 @@ function Section({ flixes, title }: IGenre) {
 
     let w:any;
     const handleArrows = (dir: string) => {
-        let movieSections: any;
+        
         
         if (typeof document !== "undefined") {
-            movieSections = document.getElementById('movieSlide')! as HTMLImageElement || null;
+          const  movieSections = document.getElementById('movieSlide')! as HTMLImageElement || null;
             w = movieSections.clientWidth - 20;
         };
         if (slideRef.current) {
