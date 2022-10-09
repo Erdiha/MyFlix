@@ -2,13 +2,8 @@ import React from 'react'
 import Header from '../components/Header'
 import Link from 'next/link';
 import useAuth, { userLibrary } from '../data/data';
-import { collection, deleteDoc, DocumentData, onSnapshot, doc, setDoc } from 'firebase/firestore';
-import { db } from '../fbAuth';
-import { useRouter } from 'next/router';
-import { deleteUser } from 'firebase/auth';
 function account() {
-  const router = useRouter();
-  const { deleteuser, currentUser,isLoading } = useAuth();
+  const {  currentUser } = useAuth();
   const itemsCount = userLibrary(currentUser?.uid);
   const { logout } = useAuth();
    const handleLogout =  async ()=> {
@@ -33,7 +28,7 @@ function account() {
             <p>password: ******</p>
             <hr className="border-gray-400" />
             <br />
-            <p>There are { itemsCount.length} movies & Tv shows in your Libarary</p>
+            <p>There are { itemsCount?.length} movies & Tv shows in your Libarary</p>
           
           </div>
           <button onClick={handleLogout}

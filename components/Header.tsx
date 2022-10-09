@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { MorT } from '../data/data';
-import { useRecoilValue,useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 
 function Header() {
 	const [scrolling, setScrolling] = useState(false);

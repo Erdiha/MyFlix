@@ -8,7 +8,7 @@ import useAuth,{ Iinput } from '../data/data';
 
 const Signin = () => {
     const [userLogin,setUserLogin]= useState(false)
-    const { logIn,logout } = useAuth();
+    const { logIn } = useAuth();
     //react hook form validation
     const { register, handleSubmit, watch, formState: { errors } } = useForm<Iinput>();
     //when the user clicked button to login, do auth

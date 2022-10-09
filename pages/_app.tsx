@@ -3,11 +3,7 @@ import type { AppProps } from 'next/app';
 import 'tailwindcss/tailwind.css';
 import { AuthProvider } from '../data/data';
 import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
+  RecoilRoot
 } from 'recoil';
 
 function MyApp({ Component, pageProps }: AppProps) {

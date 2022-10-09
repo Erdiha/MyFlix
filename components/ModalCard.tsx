@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import {useRecoilState } from 'recoil';
 import useAuth,{
-  movieState, movieID, cardImagesUrl, api, GENRE_URL,
+  movieState, movieID, cardImagesUrl, api, 
   handleLongSentences, addOrRemove,playTrailer, MAIN_URL, generateGenre, textadd
 } from '../data/data';
 import MuiModal from '@mui/material/Modal'
@@ -74,8 +74,8 @@ function ModalCard() {
   const handleGenre = (item: []) => {
    getGenre.map((x: any,index:any) => {
      item.map((y: any ) => {
-       const commas = index === getGenre?.length ? "" : ",";
-       x.id === y && flixGenre.push(<p>{`${x.name}${ commas}`}</p>)
+       
+       x.id === y && flixGenre.push(<p>{`${x.name}`}</p>)
     })});
    return flixGenre
   };

@@ -1,4 +1,4 @@
-import React, { useRef,useState} from 'react'
+import React, { useRef} from 'react'
 import {ChevronRightIcon,ChevronLeftIcon} from '@heroicons/react/outline'
 import Image from 'next/image'
 import   { cardImagesUrl,movieState,movieID,IGenre,handleRating } from '../data/data';

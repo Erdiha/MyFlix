@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
 import { all_data,movieState,titles,userLibrary } from '../data/data';
-import { Iprops, Movie } from '../data/types';
+import { Iprops } from '../data/types';
 import Section from '../components/Section';
 import useAuth from '../data/data';
 import ModalCard from '../components/ModalCard';

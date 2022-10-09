@@ -14,7 +14,7 @@ function Hero({ netflixOriginals }: IOriginals) {
 
   useEffect(() => {
     const min = 0;
-    const max = netflixOriginals.length - 1;
+    const max = netflixOriginals?.length - 1;
     const rand = Math.floor(Math.random() * (max - min + 1)) + min;
     setHeroMovie(netflixOriginals[rand]);
    
