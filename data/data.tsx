@@ -56,7 +56,7 @@ export const movieGenres = ["props.actionMovies",
   "props.romanceMovies", "props.documentaries"];
 //for login
  export interface IGenre   {
-     flixes: Movie[] | DocumentData[],
+     flixes: Movie[] | DocumentData[] |null,
      title:string
 }
 export interface Iinput  {
