@@ -32,7 +32,7 @@ function MoviesOrTv() {
         movieOrTv==="movie"?setSelect((prev:any)=>{return {...prev,movie:true}}):setSelect((prev:any)=>{return {...prev,tv:true}})
 
     }, [movieOrTv]);
-    console.log("this is resdata", resData);
+   
 
   return (
       <div className='flex flex-col  relative   bg-gradient-to-t from-[rgb(173,221,208)] to-black'>

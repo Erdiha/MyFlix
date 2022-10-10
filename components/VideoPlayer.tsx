@@ -10,7 +10,6 @@ function VideoPlayer() {
     const [addList, setAddList]: any = useRecoilState(movieID);
     const [trailers, setTrailers]: any = useState();
     
-    console.log(addList.id)
   useEffect(() => {
     if (!addList) return
 
@@ -29,7 +28,7 @@ function VideoPlayer() {
     }
       fetchMovie();
     }, [addList]);
-   console.log(addList)
+
   return (
       <div className="player-wrapper ">
      <ReactPlayer

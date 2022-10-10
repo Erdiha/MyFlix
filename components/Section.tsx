@@ -30,7 +30,6 @@ function Section({ flixes, title }: IGenre) {
             slideRef.current.scrollTo({left: scrollTo, behavior:"smooth"});
         };
     };
-    console.log("this is the all data", flixes);
    
     return (
         <div className=' space-y-1 md:space-y-2 h-50'>

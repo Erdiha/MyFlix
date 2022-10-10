@@ -2,20 +2,36 @@ import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
-import useAuth,{ all_data,movieState,titles,userLibrary } from '../data/data';
-import { Iprops } from '../data/types';
+import useAuth,{ all_data,titles,userLibrary } from '../data/data';
+import {  Movie } from '../data/types';
 import Section from '../components/Section';
-import ModalCard from '../components/ModalCard';
-import { useRecoilState } from 'recoil';
+//import ModalCard from '../components/ModalCard';
+interface Props {
+  netflixOriginals: Movie[]
+  trendingNow: Movie[]
+  topRated: Movie[]
+  actionMovies: Movie[]
+  comedyMovies: Movie[]
+  horrorMovies: Movie[]
+  romanceMovies: Movie[]
+  documentaries: Movie[]
+}
 
-
-const Home = (props: (Iprops)) => {
+const Home = ({
+  netflixOriginals,
+  actionMovies,
+  comedyMovies,
+  documentaries,
+  horrorMovies,
+  romanceMovies,
+  topRated,
+  trendingNow,
+  }: (Props)) => {
   const { isLoading,currentUser } = useAuth();
-  const [displayModal, setDisplayModal] = useRecoilState(movieState);
-  const movieGenres = [props.actionMovies,
-  props.comedyMovies, props.horrorMovies,
-  props.topRated, props.trendingNow,
-    props.romanceMovies, props.documentaries];
+  const movieGenres = [actionMovies,
+  comedyMovies, horrorMovies,
+  topRated, trendingNow,
+  romanceMovies, documentaries];
   const lib = userLibrary(currentUser?.uid)
 
   const sec: any = [];
@@ -41,7 +57,7 @@ const Home = (props: (Iprops)) => {
    <Header/>
       <main className='relative w-screen   bg-gradient-to-t from-[rgb(173,221,208)] to-black pb-24 lg:space-y-24 lg:pl-1 ' >
       
-      <Hero netflixOriginals={props.netflixOriginals} />
+      <Hero netflixOriginals={netflixOriginals} />
       {sectionStrips()}
       
     </main>

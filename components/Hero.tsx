@@ -4,6 +4,7 @@ import { HeroMovieImageUrl, movieState, movieID } from '../data/data';
 import Image from 'next/image'
 import { FaPlayCircle } from "react-icons/fa";
 import { useRecoilState } from 'recoil';
+
 interface IOriginals{
     netflixOriginals:Movie[]
 }
@@ -15,8 +16,9 @@ function Hero({ netflixOriginals }: IOriginals) {
   useEffect(() => {
     const min = 0;
     const max = netflixOriginals?.length - 1;
-    const rand = Math.floor(Math.random() * (max - min + 1)) + min;
-    setHeroMovie(netflixOriginals[rand]);
+    //const rand = Math.floor(Math.random() * (max - min + 1)) + min;
+     
+    setHeroMovie(netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]);
    
   }, [netflixOriginals]);
   return (
