@@ -6,7 +6,7 @@ import useAuth,{ all_data,titles,userLibrary } from '../data/data';
 import {  Movie } from '../data/types';
 import Section from '../components/Section';
 //import ModalCard from '../components/ModalCard';
-interface Props {
+interface IProps {
   netflixOriginals: Movie[]
   trendingNow: Movie[]
   topRated: Movie[]
@@ -26,7 +26,7 @@ const Home = ({
   romanceMovies,
   topRated,
   trendingNow,
-  }: (Props)) => {
+  }: IProps) => {
   const { currentUser } = useAuth();
   const movieGenres = [actionMovies,
   comedyMovies, horrorMovies,

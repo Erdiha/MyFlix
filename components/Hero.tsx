@@ -5,10 +5,10 @@ import Image from 'next/image'
 import { FaPlayCircle } from "react-icons/fa";
 import { useRecoilState } from 'recoil';
 
-interface IOriginals{
+interface IProps{
     netflixOriginals:Movie[]
 }
-function Hero({ netflixOriginals }: IOriginals) {
+function Hero({ netflixOriginals }: IProps) {
   const [heroMovie, setHeroMovie]: any = useState<Movie | null>(null);
   const [displayModal, setDisplayModal] = useRecoilState(movieState);
   const [getMovie, setMovie] = useRecoilState(movieID);
@@ -18,7 +18,7 @@ function Hero({ netflixOriginals }: IOriginals) {
     // const max = netflixOriginals?.length - 1;
     //const rand = Math.floor(Math.random() * (max - min + 1)) + min;
      
-    // setHeroMovie(netflixOriginals[Math.floor(Math.random() * netflixOriginals?.length)]);
+    netflixOriginals && setHeroMovie(netflixOriginals[Math.floor(Math.random() * netflixOriginals?.length)]);
    
   }, [netflixOriginals]);
   return (

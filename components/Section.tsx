@@ -6,11 +6,11 @@ import { useRecoilValue,useRecoilState } from 'recoil';
 import { DocumentData } from 'firebase/firestore';
 import { Movie } from '../data/types';
 import { handleRating } from '../data/helperFunctions';
-  interface IGenre   {
+  interface IProps   {
      flixes: Movie[] | DocumentData[] |null,
      title:string
 }
-function Section({ flixes, title }: IGenre) {
+function Section({ flixes, title }: IProps) {
     const slideRef = useRef<HTMLDivElement>(null);
     const [displayModal, setDisplayModal] = useRecoilState(movieState);
     const [getMovie, setMovie] = useRecoilState(movieID);
