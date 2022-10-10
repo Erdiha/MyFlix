@@ -7,7 +7,7 @@ import { DocumentData } from 'firebase/firestore';
 import { Movie } from '../data/types';
 import { handleRating } from '../data/helperFunctions';
   interface IProps   {
-     flixes: Movie[] | DocumentData[] |null,
+     flixes: Movie[] | DocumentData[] ,
      title:string
 }
 function Section({ flixes, title }: IProps) {

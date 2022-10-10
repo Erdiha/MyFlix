@@ -27,9 +27,9 @@ function Hero({ netflixOriginals }: IProps) {
             lg:justify-end lg:pb-10 mt-[92px]
              items-center relative ' >
       <div className='hero-wrapper'>
-        {/* <Image layout='fill' 
+        <Image layout='fill' 
            src={`${HeroMovieImageUrl}${heroMovie?.backdrop_path || heroMovie?.poster_path}`}
-        /> */}
+        />
       </div>
       <div className='desc-wrapper '>
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold" >{heroMovie?.title || heroMovie?.name || heroMovie?.original_name}</h1>
