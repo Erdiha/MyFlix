@@ -177,7 +177,7 @@ export const movieState = atom({
   default:false
 })
 
-export const movieID = atom<null | Movie |DocumentData >({
+export const movieID = atom< Movie |DocumentData|null >({
   key: 'movieID',
   default: null
 });
@@ -237,7 +237,7 @@ export const handleLongSentences = (item: any,limit:number) => {
 export const handleRating = (flix: any) => {
       
   if (flix) {
-    const rating = flix.vote_average * 10 + "%";
+    const rating = flix?.vote_average * 10 + "%";
      const num = parseInt(rating)
     return Math.round(num * 10) / 10;
   };
