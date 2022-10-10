@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import { Movie } from '../data/types';
-import { HeroMovieImageUrl, movieState, movieID } from '../data/data';
+import { HeroMovieImageUrl, movieState, movieID, MAIN_URL } from '../data/data';
 import Image from 'next/image'
 import { FaPlayCircle } from "react-icons/fa";
 import { useRecoilState } from 'recoil';
@@ -14,11 +14,11 @@ function Hero({ netflixOriginals }: IOriginals) {
   const [getMovie, setMovie] = useRecoilState(movieID);
 
   useEffect(() => {
-    const min = 0;
-    const max = netflixOriginals?.length - 1;
+    // const min = 0;
+    // const max = netflixOriginals?.length - 1;
     //const rand = Math.floor(Math.random() * (max - min + 1)) + min;
      
-    setHeroMovie(netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]);
+    setHeroMovie(netflixOriginals[Math.floor(Math.random() * netflixOriginals?.length)]);
    
   }, [netflixOriginals]);
   return (
@@ -28,7 +28,7 @@ function Hero({ netflixOriginals }: IOriginals) {
              items-center relative ' >
       <div className='hero-wrapper'>
         <Image layout='fill' className=' imgContainer object-cover'
-          src={`${HeroMovieImageUrl ? HeroMovieImageUrl + heroMovie?.poster_path : "http://via.placeholder.com/1080x1580"}`}
+           src={`${MAIN_URL}${heroMovie?.backdrop_path || heroMovie?.poster_path}`}
         />
       </div>
       <div className='desc-wrapper '>
