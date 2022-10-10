@@ -1,10 +1,10 @@
 import React from 'react'
-import useAuth,{ cardImagesUrl, movieID, movieState,userLibrary,handleRating,handleLongSentences } from '../data/data';
+import useAuth,{ cardImagesUrl, movieID, movieState,userLibrary } from '../data/data';
 import Header from '../components/Header';
 import Image from 'next/image'
 import { useRecoilState } from 'recoil';
 import ModalCard from '../components/ModalCard';
-
+import { handleRating } from '../data/helperFunctions';
 function MyLibrary() {
     const { currentUser } = useAuth();
     const lib = userLibrary(currentUser?.uid);
@@ -23,7 +23,7 @@ function MyLibrary() {
                   <div id='movieSlide' className='flex   transition-all  p-3 mt-[11rem]
                     duration-300 ease-in-out   items-center  flex-wrap gap-2 justify-center md:gap-5 md:p-10 md:mt-[14rem]
                     overflow-x-scroll scrollbar-hide  '>
-                        {lib &&lib.map((flix) => 
+                        {lib && lib.map((flix) => 
                         (<div onClick={() => {
                             setMovie(flix);
                             setDisplayModal(true);

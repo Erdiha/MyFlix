@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { MAIN_URL, api,MorT, cardImagesUrl, handleRating, movieState, movieID } from '../data/data';
+import { MAIN_URL, api,MorT, cardImagesUrl, movieState, movieID } from '../data/data';
 import Header from '../components/Header';
 import Image from 'next/image'
 import { useRecoilState } from 'recoil';
@@ -7,7 +7,7 @@ import ModalCard from '../components/ModalCard';
  import {IconButton } from"@mui/material";
 import TextField from "@mui/material/TextField";
 import { SearchOutlined } from '@mui/icons-material';
-
+import { handleRating } from '../data/helperFunctions';
 
 function MoviesOrTv() {
 
