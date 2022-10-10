@@ -15,36 +15,50 @@ function MoviesOrTv() {
     const [displayModal, setDisplayModal] = useRecoilState(movieState);
     const [getMovie, setMovie] = useRecoilState(movieID);
     const [movieOrTv, setmovieOrTv] = useRecoilState(MorT);
+    const [searchTerm, setSearchTerm] = useState("");
+  
     const [select, setSelect] = useState({
         tv: false,
         movie: false
     });
-    const [searchTerm, setSearchTerm] = useState("");
-    let flixName: string;
-    useEffect(() => {
-
-            async function getAll() {  
-              const  allData=   await fetch(`${MAIN_URL}/discover/${movieOrTv}?api_key=${api}&certification_country=US&certification.lte=G&sort_by=popularity.desc&page=1`
+  
+  const handleMovieOrTv = (e: any) => {
+    const getInner = e.target.innerHTML!;
+    if (getInner) {
+      getInner === "Movies" ? setmovieOrTv("movie") : getInner === "TV" && setmovieOrTv("tv");
+     movieOrTv==="movie"?setSelect((prev:any)=>{return {...prev,movie:true}}):setSelect((prev:any)=>{return {...prev,tv:true}})
+    };
+  };
+    async function getAll(rand:number) {  
+              const  allData=   
+         movieOrTv !==""  &&   await fetch(`${MAIN_URL}/discover/${movieOrTv}?api_key=${api}&certification_country=US&certification.lte=G&sort_by=popularity.desc&page=${rand}`
             ).then((response) => response.json()).catch((error) => { alert(error.message) });
               setResData(allData.results);
         };
-        getAll();
-        movieOrTv==="movie"?setSelect((prev:any)=>{return {...prev,movie:true}}):setSelect((prev:any)=>{return {...prev,tv:true}})
-
-    }, [movieOrTv]);
-    console.log("this is resdata", resData);
-
+  let flixName: string;
+  
+    useEffect(() => {
+    const min = 0;
+    const rand = Math.floor(Math.random() * (20 - min + 1)) + min;
+     getAll(rand);
+    }, [movieOrTv, select]);
+ 
   return (
-      <div className='flex flex-col  relative   bg-gradient-to-t from-[rgb(173,221,208)] to-black'>
+      <div className='flex flex-col  relative min-h-screen   bg-gradient-to-t from-[rgb(173,221,208)] to-black'>
           <Header />
           <div className='flex  mt-[10rem] flex-col justify-center items-center '>
-               <TextField
+        <div className='flex justify-around gap-3 md:w-[500px]'>
+         <button onClick={(e:any)=>handleMovieOrTv(e)} className="moviesORtv-btn">Movies</button>
+          <button onClick={(e: any) => handleMovieOrTv(e)} className="moviesORtv-btn">TV</button>
+        </div>
+          <div className='mt-5'>
+            {movieOrTv !=="" && <TextField
                
-                  className='text-black bg-slate-200 h-full p-2 w-full font-semibold text-[20px] rounded md:w-[500px]
+                  className='text-black bg-slate-200 h-full p-2 w- font-semibold text-[20px] rounded md:w-[500px]
                   md:text-2xl'
                 id="standard-bare"
                 variant="outlined"
-                  defaultValue={`Search in ${movieOrTv}`}
+                placeholder='Search...'
                   onChange={(e:any)=>setSearchTerm(e.target.value)}
                 InputProps={{
                   endAdornment: (
@@ -53,7 +67,9 @@ function MoviesOrTv() {
                     </IconButton>
                   ),
                 }}
-              />
+              />}
+           </div>
+       
              <div id='movieSlide' className='flex   transition  p-3 mt-[2rem]
                     duration-300 ease-in-out   items-center  flex-wrap gap-2 
                     justify-center md:gap-5 md:p-10 

@@ -199,6 +199,15 @@ export const playTrailer = atom({
   default: false
 })
 
+export const navItemSelection = atom({
+  key: 'navItemSelection',
+  default: {
+    home: false,
+    library: false,
+    movies:false
+  }
+})
+
 
 export const userLibrary = (UID: undefined | string) => {
   const [getList, setGetList] = useState<Movie[] | DocumentData[]>([]);

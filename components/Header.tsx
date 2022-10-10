@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { MorT } from '../data/data';
+import { MorT,navItemSelection } from '../data/data';
 import { useRecoilState } from 'recoil';
+
+
 
 function Header() {
 	const [scrolling, setScrolling] = useState(false);
-	const [movieOrTv,setmovieOrTv] = useRecoilState(MorT);
+	const [movieOrTv, setmovieOrTv] = useRecoilState(MorT);
+	const [activeClass, setActiveClass] = useRecoilState(navItemSelection);
 
-  useEffect(() => {
+
+	useEffect(() => {
+	  	
     const scrll = () => {
     window.scrollY > 0?setScrolling(true):setScrolling(false);
     };
@@ -15,18 +20,41 @@ function Header() {
     return () => { 
       window.removeEventListener('scroll', scrll);
     }
-},[])
+},[movieOrTv])
  
-  const handleClick = (e: any) => {
-    const btn = document.querySelector("button.mobile-menu-button")!;
-    const menu = document.querySelector(".mobile-menu")!;
+const handleClick = (e: any) => {
+	const btn = document.querySelectorAll("button.mobile-menu-button")!;
+	const menu = document.querySelector(".mobile-menu")!;
+	const items = document.querySelectorAll(".item")!;
    
     if (btn && menu) {
       menu.classList.toggle("hidden");
     }
-  };
   
+  
+	// if (e.target.innerHTML === "Home") {
+	// 	setActiveClass((prev: any) => { return { ...prev, home: true, library: false, movies: false } })
+	// }
+	// else if (e.target.innerHTML === "My Library") {
+	// 	setActiveClass((prev: any) => { return { ...prev, home: false, library: true, movies: false } })
+	// }
+	// else if (e.target.innerHTML === "Movies & TV") {
+	// 	setActiveClass((prev: any) => { return { ...prev, home: false, library: false, movies: true } })
+	// }; 
 
+	
+		// items.forEach(i => {
+		// 	if (e.target === i) {
+		// 		i.classList.add("border-[#ADDDD0]")
+		// 	}
+		// 	else {
+		// 		i.classList.remove("border-[#ADDDD0]")
+		// 	}
+		// })
+
+  };
+
+console.log(activeClass)
   return (
 		<nav className={`${scrolling && 'bg-opacity-[0.9]'} bg-[#000000] shadow-lg w-full`}>
 			<div className="max-w-7xl mx-auto px-4">
@@ -37,21 +65,19 @@ function Header() {
 								<span className="font-semibold text-red-100 text-3xl">MyFlix</span>
 							</a>
 						</div>
-            <div className=" hidden md:flex items-center justify-center space-x-10 text-red-100">
-							<Link href="/"><a   className="item py-4 px-2 transition duration-300 ">Home</a></Link>
-						  <Link href="/MoviesOrTv"><a onClick={() => setmovieOrTv("movie")}
-							  className="item py-4 px-2 transition duration-300">Movies</a></Link>
-							<Link href="/MoviesOrTv"><a onClick={() => setmovieOrTv("tv")} className="item py-4 px-2 transition duration-300">Tv Shows</a></Link>
-							<Link href="/MyLibrary"><a className="item py-4 px-2 transition duration-300">My Library</a></Link>
+            			<div className=" hidden md:flex items-center justify-center space-x-10 text-red-100">
+							<Link href="/"><a onClick={(e:any)=>handleClick(e)}   className={`item`}>Home</a></Link>
+						  	<Link href="/MoviesOrTv"><a onClick={(e:any)=>handleClick(e)}  className={`item`}>Movies & TV</a></Link>
+							<Link href="/MyLibrary"><a onClick={(e:any)=>handleClick(e)} className={`item`}>My Library</a></Link>
 						</div>
 					</div>
 					<div className="hidden md:flex items-center space-x-5 ">
 					  <Link href="/account"><a  className="py-2 px-2 font-medium 
-						 text-gray-500 rounded outline hover:bg-[#ADDDD0] hover:text-black hover:scale-105
+						 text-gray-400 rounded outline hover:bg-[#ADDDD0] hover:text-black hover:scale-105
 						  transition duration-300">Account</a></Link>
 					 
 					</div>
-					<div className="md:hidden flex items-center">
+					<div className=" md:hidden flex items-center">
 						<button onClick={handleClick} className="outline-none mobile-menu-button">
 						<svg className=" w-6 h-6 text-gray-500 hover:text-green-500 "
 							x-show="!showMenu"
@@ -68,13 +94,11 @@ function Header() {
 					</div>
 				</div>
 			</div>
-			<div className="hidden mobile-menu">
-			  <ul className="">
-				  <Link href="/"><li className="active"><a  className="block text-sm px-2 py-4 text-white bg-green-500 font-semibold">Home</a></li>
-				</Link>
-					<Link href="/MoviesOrTv"><li><a onClick={()=>setmovieOrTv("movie")} className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Movies</a></li></Link>
-					<Link href="/MoviesOrTv"><li><a onClick={()=>setmovieOrTv("tv")} className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Tv Shows</a></li></Link>
-					<Link href="/MyLibrary"><li><a  className="block text-sm px-2 py-4 hover:bg-[ #ADDDD0] transition duration-300">My Library </a></li></Link>
+			<div className="md:hidden hidden mobile-menu text-white">
+			  <ul >
+				<Link href="/"><li ><a  className="mobile-navbar-items">Home</a></li></Link>
+				<Link href="/MoviesOrTv"><li ><a  className="mobile-navbar-items">Movies & TV</a></li></Link>
+				<Link href="/MyLibrary"><li ><a  className="mobile-navbar-items">My Library </a></li></Link>
 				</ul>
 			</div>
 	

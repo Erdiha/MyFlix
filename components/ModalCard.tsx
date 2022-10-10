@@ -72,10 +72,10 @@ function ModalCard() {
 
   
   const handleGenre = (item: []) => {
-   getGenre.map((x: any,index:any) => {
+   getGenre.map((x: any) => {
      item.map((y: any ) => {
        
-       x.id === y && flixGenre.push(<p>{`${x.name}`}</p>)
+       x.id === y && flixGenre.push(<p key={x.id}>{`${x.name}`}</p>)
     })});
    return flixGenre
   };

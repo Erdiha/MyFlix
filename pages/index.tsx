@@ -2,7 +2,7 @@ import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
-import useAuth,{ all_data,movieState,titles,userLibrary } from '../data/data';
+import useAuth,{ all_data,movieState,navItemSelection,titles,userLibrary } from '../data/data';
 import { Iprops } from '../data/types';
 import Section from '../components/Section';
 import ModalCard from '../components/ModalCard';
@@ -12,6 +12,8 @@ import { useRecoilState } from 'recoil';
 const Home = (props: (Iprops)) => {
   const { isLoading,currentUser } = useAuth();
   const [displayModal, setDisplayModal] = useRecoilState(movieState);
+  	const [activeClass, setActiveClass] = useRecoilState(navItemSelection);
+
   const movieGenres = [props.actionMovies,
   props.comedyMovies, props.horrorMovies,
   props.topRated, props.trendingNow,
