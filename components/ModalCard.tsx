@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import {useRecoilState } from 'recoil';
 import useAuth,{
   movieState, movieID, cardImagesUrl, api, 
-  handleLongSentences, addOrRemove,playTrailer, MAIN_URL, generateGenre, textadd
+  addOrRemove,playTrailer, MAIN_URL, textadd
 } from '../data/data';
 import MuiModal from '@mui/material/Modal'
 import {
@@ -13,6 +13,7 @@ import { db } from '../fbAuth';
 import { Movie } from '../data/types';
 import { TiTick, TiPlus } from 'react-icons/ti';
 import VideoPlayer from './VideoPlayer';
+import { generateGenre } from '../data/helperFunctions';
 
 function ModalCard() {
  
@@ -71,14 +72,18 @@ function ModalCard() {
   }, []);
 
   
-  const handleGenre = (item: []) => {
-   getGenre.map((x: any,index:any) => {
-     item.map((y: any ) => {
+  // const handleGenre = (item: []) => {
+  //  getGenre.map((x: any,index:any) => {
+  //    item.map((y: any ) => {
        
-       x.id === y && flixGenre.push(<p>{`${x.name}`}</p>)
-    })});
-   return flixGenre
-  };
+  //      x.id === y && flixGenre.push(<p>{`${x.name}`}</p>)
+  //   })});
+  //  return flixGenre
+  // };
+
+  function handleLongSentences(overview: any, arg1: number): React.ReactNode {
+    throw new Error('Function not implemented.');
+  }
 
   return <MuiModal onClose={() => {
     setDisplayModal(false);
@@ -103,7 +108,7 @@ function ModalCard() {
               max-w-full m- p-1  font-semibold absolute bottom-[17rem] flex flex-row
               ml-3
               md:max-w-lg md:text-md lg:max-w-2xl gap-1 
-          '>{handleGenre(addList.genre_ids)}</div>
+          '></div>
           
           <p className=' text-sm lg:text-[18px] leading-6 
               absolute bottom-[6rem] max-w-full m-1 p-1 md:m-[10px] md:p-[15px]

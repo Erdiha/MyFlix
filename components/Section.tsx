@@ -1,11 +1,11 @@
 import React, { useRef,useState} from 'react'
 import {ChevronRightIcon,ChevronLeftIcon} from '@heroicons/react/outline'
 import Image from 'next/image'
-import useAuth , { cardImagesUrl,userLibrary,movieState,movieID,handleLongSentences,handleRating } from '../data/data';
+import useAuth , { cardImagesUrl,userLibrary,movieState,movieID } from '../data/data';
 import { useRecoilValue,useRecoilState } from 'recoil';
 import { DocumentData } from 'firebase/firestore';
 import { Movie } from '../data/types';
-
+import { handleRating } from '../data/helperFunctions';
   interface IGenre   {
      flixes: Movie[] | DocumentData[] |null,
      title:string
