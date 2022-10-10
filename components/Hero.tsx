@@ -18,7 +18,7 @@ function Hero({ netflixOriginals }: IOriginals) {
     // const max = netflixOriginals?.length - 1;
     //const rand = Math.floor(Math.random() * (max - min + 1)) + min;
      
-    // setHeroMovie(netflixOriginals[Math.floor(Math.random() * netflixOriginals?.length)]);
+    setHeroMovie(netflixOriginals[Math.floor(Math.random() * netflixOriginals?.length)]);
    
   }, [netflixOriginals]);
   return (
