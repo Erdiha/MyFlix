@@ -1,10 +1,9 @@
 import React,{useState,useEffect} from 'react'
 import { Movie } from '../data/types';
-import { HeroMovieImageUrl, movieState, movieID } from '../data/data';
+import { HeroMovieImageUrl, movieState, movieID, handleLongSentences } from '../data/data';
 import Image from 'next/image'
 import { FaPlayCircle } from "react-icons/fa";
 import { useRecoilState } from 'recoil';
-import { handleLongSentences } from '../data/helperFunctions'
 interface IOriginals{
     netflixOriginals:Movie[]
 }
@@ -17,7 +16,7 @@ function Hero({ netflixOriginals }: IOriginals) {
     const min = 0;
     const max = netflixOriginals?.length - 1;
     const rand = Math.floor(Math.random() * (max - min + 1)) + min;
-    netflixOriginals && setHeroMovie(netflixOriginals[rand]);
+    setHeroMovie(netflixOriginals[rand]);
    
   }, [netflixOriginals]);  
   return (
@@ -42,9 +41,8 @@ function Hero({ netflixOriginals }: IOriginals) {
                    bg-[#ADDDD0]'><FaPlayCircle className='m-2' />  {`${ " "} Play`}</button>
                <button
                 onClick={()=>{  
-                  setDisplayModal( true);
-                  setMovie(heroMovie);
-            }}
+                  setDisplayModal(() => true);
+                  setMovie(heroMovie); }}
 
                   className='hero-btn text-[1rem]  
                   

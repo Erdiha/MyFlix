@@ -78,7 +78,6 @@ interface IAuth{
   logIn: (email: string, password: string) => Promise<void>,
   logout: () => Promise<void>,
   Register: (email: string, password: string) => Promise<void>,
-  deleteuser:()=> Promise<void>,
 }
 
 const AuthContext = createContext<IAuth>({
@@ -89,7 +88,7 @@ const AuthContext = createContext<IAuth>({
   logIn: async () => {},
   logout: async () => {},
   Register: async () => { },
-  deleteuser: async () => { }
+
 });
 
 
@@ -151,17 +150,13 @@ export const AuthProvider = ({ children }: AProps) => {
       .catch((error) => alert(error.message))
       .finally(() => setIsLoading(false))
   }
-  const deleteuser = async () => {
-       const docRef = doc(db, "users", currentUser!.uid);
-     currentUser && await deleteUser(currentUser);
-   await deleteDoc(docRef);
-  };
+
 
   
 
 //return authcontext
   return (
-    <AuthContext.Provider value={{ currentUser, logIn, logout, Register, isLoading,deleteuser }}>
+    <AuthContext.Provider value={{ currentUser, logIn, logout, Register, isLoading }}>
       {!firstLoading && children}
     </AuthContext.Provider>
   )
@@ -177,7 +172,7 @@ export const movieState = atom({
   default:false
 })
 
-export const movieID = atom< Movie |DocumentData|null >({
+export const movieID = atom<null | Movie |DocumentData >({
   key: 'movieID',
   default: null
 });
@@ -226,4 +221,35 @@ export const userLibrary = (UID: undefined | string) => {
   return getList;
 };
 
+//handles the long titles
+export const handleLongSentences = (item: any,limit:number) => {
+  if (item) {
+    
+    return item.length > limit ? item.substring(0, limit) + "..." : item
+  };     
+};
+//handles the rating
+export const handleRating = (flix: any) => {
+      
+  if (flix) {
+    const rating = flix.vote_average * 10 + "%";
+     const num = parseInt(rating)
+    return Math.round(num * 10) / 10;
+  };
+        
+};
+
+//helper function for genre generation
+export const generateGenre = ({setGenre,genre }:any) => {
+    useEffect(() => {
+            async function getAll() {
+            const allData = await fetch(
+                `${MAIN_URL}/genre/movie/list?api_key=${api}&language=en=US`
+            ).then((response) => response.json()).catch((error) => { alert(error.message) });
+             setGenre(allData.genres)
+        };
+        getAll();
+    }, []);
+  return genre;
+}
 

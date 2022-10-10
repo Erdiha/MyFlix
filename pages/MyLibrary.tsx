@@ -1,10 +1,10 @@
 import React from 'react'
-import useAuth,{ cardImagesUrl, movieID, movieState,userLibrary } from '../data/data';
+import useAuth,{ cardImagesUrl, handleRating, movieID, movieState,userLibrary } from '../data/data';
 import Header from '../components/Header';
 import Image from 'next/image'
 import { useRecoilState } from 'recoil';
 import ModalCard from '../components/ModalCard';
-import { handleRating } from '../data/helperFunctions';
+
 function MyLibrary() {
     const { currentUser } = useAuth();
     const lib = userLibrary(currentUser?.uid);
@@ -46,7 +46,7 @@ function MyLibrary() {
                         )}
               </div>):(<p className='text-[1rem] md:text[2rem]'>Add Movies to Display Here</p>) 
           }
-           {/* {displayModal && <ModalCard/>} */}
+           {displayModal && <ModalCard/>}
           </>
   
  </div>

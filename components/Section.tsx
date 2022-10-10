@@ -1,11 +1,11 @@
-import React, { useRef,useState} from 'react'
+import React, { useRef} from 'react'
 import {ChevronRightIcon,ChevronLeftIcon} from '@heroicons/react/outline'
 import Image from 'next/image'
-import useAuth , { cardImagesUrl,userLibrary,movieState,movieID } from '../data/data';
-import { useRecoilValue,useRecoilState } from 'recoil';
+import   { cardImagesUrl,movieState,movieID, handleRating } from '../data/data';
+import { useRecoilState } from 'recoil';
 import { DocumentData } from 'firebase/firestore';
 import { Movie } from '../data/types';
-import { handleRating } from '../data/helperFunctions';
+
   interface IProps   {
      flixes: Movie[] | DocumentData[] ,
      title:string
@@ -43,7 +43,7 @@ function Section({ flixes, title }: IProps) {
                 <div ref={slideRef} id='movieSlide' className='flex scroll scroll-smooth ml-2  transition-all 
                     duration-300 ease-in-out  whitespace-nowrap items-center space-x-0.5 py-3 gap-3
                     overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-4'>
-                        {flixes &&flixes.map((flix) => 
+                        {flixes && flixes.map((flix) => 
                         (<div onClick={() => {
                             setMovie(flix);
                             setDisplayModal(true);
