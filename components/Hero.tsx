@@ -28,7 +28,7 @@ function Hero({ netflixOriginals }: IOriginals) {
              items-center relative ' >
       <div className='hero-wrapper'>
         <Image layout='fill' 
-           src={`${MAIN_URL}${heroMovie?.backdrop_path || heroMovie?.poster_path}`}
+           src={`${HeroMovieImageUrl}${heroMovie?.backdrop_path || heroMovie?.poster_path}`}
         />
       </div>
       <div className='desc-wrapper '>
