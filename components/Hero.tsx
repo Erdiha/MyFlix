@@ -18,7 +18,7 @@ function Hero({ netflixOriginals }: IOriginals) {
     // const max = netflixOriginals?.length - 1;
     //const rand = Math.floor(Math.random() * (max - min + 1)) + min;
      
-    setHeroMovie(netflixOriginals[Math.floor(Math.random() * netflixOriginals?.length)]);
+    // setHeroMovie(netflixOriginals[Math.floor(Math.random() * netflixOriginals?.length)]);
    
   }, [netflixOriginals]);
   return (
@@ -27,12 +27,12 @@ function Hero({ netflixOriginals }: IOriginals) {
             lg:justify-end lg:pb-10 mt-[92px]
              items-center relative ' >
       <div className='hero-wrapper'>
-        <Image layout='fill' className=' imgContainer object-cover'
+        <Image layout='fill' 
            src={`${MAIN_URL}${heroMovie?.backdrop_path || heroMovie?.poster_path}`}
         />
       </div>
       <div className='desc-wrapper '>
-        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold" >{heroMovie?.title}</h1>
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold" >{heroMovie?.title || heroMovie?.name || heroMovie?.original_name}</h1>
         <p className='max-w-xs text-sm lg:text-2xl
               md:max-w-lg md:text-md lg:max-w-2xl 
                '>
