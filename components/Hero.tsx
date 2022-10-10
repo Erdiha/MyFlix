@@ -4,9 +4,8 @@ import { HeroMovieImageUrl, movieState, movieID, handleLongSentences } from '../
 import Image from 'next/image'
 import { FaPlayCircle } from "react-icons/fa";
 import { useRecoilState } from 'recoil';
-
 interface IOriginals{
-  netflixOriginals: Movie[];
+    netflixOriginals:Movie[]
 }
 function Hero({ netflixOriginals }: IOriginals) {
   const [heroMovie, setHeroMovie]: any = useState<Movie | null>(null);
@@ -16,9 +15,8 @@ function Hero({ netflixOriginals }: IOriginals) {
   useEffect(() => {
     const min = 0;
     const max = netflixOriginals?.length - 1;
-    //const rand = Math.floor(Math.random() * (max - min + 1)) + min;
-    netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]
-    //setHeroMovie(netflixOriginals[rand]);
+    const rand = Math.floor(Math.random() * (max - min + 1)) + min;
+    setHeroMovie(netflixOriginals[rand]);
    
   }, [netflixOriginals]);  
   return (

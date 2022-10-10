@@ -7,7 +7,7 @@ import { DocumentData } from 'firebase/firestore';
 import { Movie } from '../data/types';
 
   interface IGenre   {
-     flixes: Movie[] | DocumentData[],
+     flixes: Movie[] | DocumentData[] |null,
      title:string
 }
 function Section({ flixes, title }: IGenre) {
@@ -44,7 +44,7 @@ function Section({ flixes, title }: IGenre) {
                 <div ref={slideRef} id='movieSlide' className='flex scroll scroll-smooth ml-2  transition-all 
                     duration-300 ease-in-out  whitespace-nowrap items-center space-x-0.5 py-3 gap-3
                     overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-4'>
-                        {flixes.map((flix) => 
+                        {flixes &&flixes.map((flix) => 
                         (<div onClick={() => {
                             setMovie(flix);
                             setDisplayModal(true);
@@ -55,8 +55,7 @@ function Section({ flixes, title }: IGenre) {
                                 id='slide-image'
                                 className="object-cover cover "
                                 layout='fill'
-                                src={`https://image.tmdb.org/t/p/w500${ flix.backdrop_path || flix.poster_path
-        }`}
+                                src={`${flix.poster_path? cardImagesUrl+flix.poster_path: "http://via.placeholder.com/1080x1580" }`}
                             />
                           
                             <p className={`absolute h-8 w-8 md:w-10 md:h-10  text-black text-sm
