@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
   module.exports = {
-   purge: [],
+    purge: [],
+    images: {
+    domains: ['tmdb.org', 'themoviedb.org'],
+  },
    purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
     darkMode: false, // or 'media' or 'class'
     theme: {

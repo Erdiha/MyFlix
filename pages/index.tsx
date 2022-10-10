@@ -27,7 +27,7 @@ const Home = ({
   topRated,
   trendingNow,
   }: (Props)) => {
-  const { isLoading,currentUser } = useAuth();
+  const { currentUser } = useAuth();
   const movieGenres = [actionMovies,
   comedyMovies, horrorMovies,
   topRated, trendingNow,
@@ -48,7 +48,7 @@ const Home = ({
    
     return sec;
   };
-  return (!isLoading ? <div className="relative h-screen w-screen
+  return <div className="relative h-screen w-screen
       
      ">
       <Head>
@@ -63,8 +63,7 @@ const Home = ({
     </main>
     {/* {displayModal && <ModalCard/>} */}
     
-  </div>: <p></p>
-    )
+  </div>
   
 }
 
