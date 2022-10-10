@@ -55,10 +55,7 @@ export const movieGenres = ["props.actionMovies",
   "props.horrorMovies", "props.topRated", "props.trendingNow",
   "props.romanceMovies", "props.documentaries"];
 //for login
- export interface IGenre   {
-     flixes: Movie[] | DocumentData[] |null,
-     title:string
-}
+
 export interface Iinput  {
     email: string,
     password:string
