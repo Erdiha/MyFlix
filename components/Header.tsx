@@ -98,7 +98,8 @@ console.log(activeClass)
 			  <ul >
 				<Link href="/"><li ><a  className="mobile-navbar-items">Home</a></li></Link>
 				<Link href="/MoviesOrTv"><li ><a  className="mobile-navbar-items">Movies & TV</a></li></Link>
-				<Link href="/MyLibrary"><li ><a  className="mobile-navbar-items">My Library </a></li></Link>
+				  <Link href="/MyLibrary"><li ><a className="mobile-navbar-items">My Library </a></li></Link>
+				  <Link href="/account"><li ><a  className="mobile-navbar-items">Account </a></li></Link>
 				</ul>
 			</div>
 	
