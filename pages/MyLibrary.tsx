@@ -15,8 +15,9 @@ function MyLibrary() {
           
           <>
               <Header />
-          <h1 className='p-5 absolute top-[7rem] md:top-[8rem] md:p-10
-           text-white text-xl ml-[4rem] fotn bold md:text-[2rem]'>My Library</h1>
+              <h1 className='p-5 absolute top-[7rem] md:top-[8rem]  text-center w-full md:text-start
+          md:w-[18rem]  md:border-l-2 pl-[40px] md:p-2 ] md:border-red-500
+           text-gray-200 text-xl md:ml-[5rem] font-bold md:text-[2rem]'>My Library</h1>
           {
               lib?.length > 0 ? (
                   <div id='movieSlide' className='flex   transition-all  p-3 mt-[11rem]
@@ -43,7 +44,8 @@ function MyLibrary() {
                              bg-slate-900 items-center flex justify-center md:font-bold`}>{handleRating(flix)+"%"}</p>
                         </div>)
                         )}
-              </div>):(<p className='text-[1rem] md:text[2rem]'>Add Movies to Display Here</p>) 
+                      </div>) : (<div className='text-[1.2rem] text-red-300
+               m-auto text-center w-full h-[20rem]  md:text[2rem]'>Add movies to display here...</div>) 
           }
            {displayModal && <ModalCard/>}
           </>
