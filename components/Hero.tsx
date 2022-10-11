@@ -37,20 +37,16 @@ function Hero({ netflixOriginals }: IOriginals) {
           </p>
               
               <div className='flex gap-10'>
-                  <button className=' hover:bg-green-300 hover:scale-[1.1] hero-btn  text-[2rem] 
+          <button onClick={() => {
+            setDisplayModal(() => true);
+            setMovie(heroMovie);
+          }}
+            className=' hover:bg-green-300 hover:scale-[1.1] hero-btn  text-[2rem] 
                    bg-[#ADDDD0]'><FaPlayCircle className='m-2' />  {`${ " "} Play`}</button>
-               <button
-                onClick={()=>{  
-                  setDisplayModal(() => true);
-                  setMovie(heroMovie); }}
-
-                  className='hero-btn text-[1rem]  
-                  
-                  text-[#f6f6f6] hover:text-[1.1rem]'>More Info...</button>
+           
               </div>
           </div>
     </div>
   )
 }
-
 export default Hero
