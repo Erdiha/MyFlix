@@ -28,14 +28,10 @@ const Signin = () => {
                 rounded-2xl relative p-[1rem] space-y-[3rem] 
                 h-[24rem] w-[16rem] md:h-[28rem] md:w-[22rem] lg:h-[32rem] lg:w-[26rem]'>
                 <h1 className=' absolute top-[13%] text-2xl text-[#ADDDD0]  font-bold'>Sign In</h1>
-                <div className='absolute w-[80%] md:w-[90%] h-[50%] flex flex-col justify-around'>
-                     <label htmlFor="Email" className='inline-block'>
+                <div className=' w-full md:w-[90%] h-[50%] flex flex-col justify-around'>              
                         <input {...register('email')} required className='input' type="email" placeholder="email" />
-                    </label>
-                    <label htmlFor="" className='inline-block'>
                         <input {...register('password')} required className='input' type="password" placeholder="Your password" />
-                    </label>
-                    <button onClick={()=>setUserLogin(true)} className="hover:scale-120 font-semibold bg-[#ADDDD0] w-[100%] h-[15%] rounded" type="submit">Sign in</button>
+                        <button onClick={()=>setUserLogin(true)} className="md:hover:scale-120 font-semibold bg-[#ADDDD0] w-[100%] h-[18%] rounded" type="submit">Sign in</button>
                 </div>
                 <span className='absolute bottom-5 text-[#ADDDD090] md:bottom-10 m-auto font-semibold '>Need an Account?
                     {" "} 

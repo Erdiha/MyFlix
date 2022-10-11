@@ -30,20 +30,13 @@ const Signup = () => {
       <span className="icon" > MyFlix </span>
             <form onSubmit={handleSubmit(onSubmit)} className=' flex flex-col justify-center bg-black/40
                 rounded-2xl relative p-[1rem] space-y-[3rem] 
-                h-[28rem] w-[16rem] md:h-[30rem] md:w-[22rem] lg:h-[33rem] lg:w-[26rem]'>
+                h-[28rem] w-[17rem] md:h-[30rem] md:w-[22rem] lg:h-[33rem] lg:w-[26rem]'>
                 <h1 className=' absolute  text-[#ADDDD0] top-[13%] text-3xl  font-bold'>Register</h1>
-                <div className='absolute w-[80%] md:w-[85%] h-[50%] flex flex-col justify-around'>
-                     <label htmlFor="Email" className='inline-block'>
-                        <input {...register('email')} required className='input' type="email" placeholder="Email" />
-                    </label>
-                    <label htmlFor="password" className='inline-block'>
+                <div className=' w-full md:w-[85%] h-[50%] flex flex-col justify-around gap-2'>
+                        <input {...register('email')} required className='input' type="email" placeholder="Email" />                 
                         <input {...register('password')} required className='input' type="password" placeholder="Your Password" />
-                    </label>
-                       <label htmlFor="RePassword" className='inline-block'>
                         <input {...register('repassword')} required className='input' type="password" placeholder="Confirm Password" />
-                   
-                    </label>
-                    <button onClick={()=>setUserSignUp(true)} className="mt-5 font-semibold bg-[#ADDDD0] w-[100%] h-[15%] rounded" type="submit">Sign up</button>
+                        <button onClick={()=>setUserSignUp(true)} className="mt-5 font-semibold bg-[#ADDDD0] w-[100%] h-[15%] rounded" type="submit">Sign up</button>
                 </div>
                 <span className='absolute bottom-5 md:bottom-10 text-[#ADDDD090] font-semibold '>Have an Account?
                     {" "} 
