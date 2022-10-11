@@ -100,8 +100,8 @@ function ModalCard() {
               <img className='imgContainer' src={`${cardImagesUrl + addList.backdrop_path || addList.poster_path}`}/>
          
           <div className=' text-sm lg:text-[18px] leading-6 w-full
-              max-w-full m- p-1  font-semibold absolute bottom-[17rem] flex flex-row
-              ml-3
+              max-w-full  p-1  font-semibold absolute bottom-[16rem] flex flex-row md:bottom-[16.5rem] 
+              md:justify-center md:m-none md:-p-none ml-3
               md:max-w-lg md:text-md lg:max-w-2xl gap-1 
           '>{handleGenre(addList.genre_ids)}</div>
           

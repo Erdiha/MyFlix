@@ -1,10 +1,13 @@
 import React from 'react'
 import Header from '../components/Header'
 import Link from 'next/link';
-import useAuth, { userLibrary } from '../data/data';
+import useAuth, { navItemSelection, userLibrary } from '../data/data';
+import { useRecoilState } from 'recoil';
 function account() {
   const {  currentUser} = useAuth();
   const itemsCount = userLibrary(currentUser?.uid);
+  	const [activeClass, setActiveClass] = useRecoilState(navItemSelection);
+
   const { logout } = useAuth();
    const handleLogout =  async ()=> {
 		  await logout();

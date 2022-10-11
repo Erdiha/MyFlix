@@ -12,7 +12,12 @@ function Header() {
 
 
 	useEffect(() => {
-	  	
+	  	// const items = document.querySelectorAll(".item")!;
+
+		// items && items.forEach(i => {
+			
+		// 	i.classList.remove("activeNavbar");
+		// });
     const scrll = () => {
     window.scrollY > 0?setScrolling(true):setScrolling(false);
     };
@@ -20,39 +25,33 @@ function Header() {
     return () => { 
       window.removeEventListener('scroll', scrll);
     }
-},[movieOrTv])
+},[movieOrTv,activeClass])
  
 const handleClick = (e: any) => {
 	const btn = document.querySelectorAll("button.mobile-menu-button")!;
 	const menu = document.querySelector(".mobile-menu")!;
-	const items = document.querySelectorAll(".item")!;
    
     if (btn && menu) {
       menu.classList.toggle("hidden");
     }
   
-  
-	// if (e.target.innerHTML === "Home") {
-	// 	setActiveClass((prev: any) => { return { ...prev, home: true, library: false, movies: false } })
-	// }
-	// else if (e.target.innerHTML === "My Library") {
-	// 	setActiveClass((prev: any) => { return { ...prev, home: false, library: true, movies: false } })
-	// }
-	// else if (e.target.innerHTML === "Movies & TV") {
-	// 	setActiveClass((prev: any) => { return { ...prev, home: false, library: false, movies: true } })
-	// }; 
+  console.log(e.target.innerHTML)
+	if (e.target.innerHTML === "Home") {
+		setActiveClass((prev: any) => { return { ...prev, home: true, library: false, movies: false ,account:false} })
+	}
+	else if (e.target.innerHTML === "My Library") {
+		setActiveClass((prev: any) => { return { ...prev, home: false, library: true, movies: false,account:false } })
+	}
+	else if (e.target.innerHTML === "Movies &amp; TV") {
+		setActiveClass((prev: any) => { return { ...prev, home: false, library: false, movies: true ,account:false} })
+	} 
+	else {
+		setActiveClass((prev: any) => { return { ...prev, home: false, library: false, movies: false,account:true } })
+	}
+	};
+
 
 	
-		// items.forEach(i => {
-		// 	if (e.target === i) {
-		// 		i.classList.add("border-[#ADDDD0]")
-		// 	}
-		// 	else {
-		// 		i.classList.remove("border-[#ADDDD0]")
-		// 	}
-		// })
-
-  };
 
 console.log(activeClass)
   return (
@@ -66,15 +65,16 @@ console.log(activeClass)
 							</a>
 						</div>
             			<div className=" hidden md:flex items-center justify-center space-x-10 text-red-100">
-							<Link href="/"><a onClick={(e:any)=>handleClick(e)}   className={`item`}>Home</a></Link>
-						  	<Link href="/MoviesOrTv"><a onClick={(e:any)=>handleClick(e)}  className={`item`}>Movies & TV</a></Link>
-							<Link href="/MyLibrary"><a onClick={(e:any)=>handleClick(e)} className={`item`}>My Library</a></Link>
+							<Link href="/"><a onClick={(e:any)=>handleClick(e)}   className={`item ${activeClass.home && "activeNavbar"}`}>Home</a></Link>
+						  	<Link href="/MoviesOrTv"><a onClick={(e:any)=>handleClick(e)}   className={`item ${activeClass.movies && "activeNavbar"}`}>Movies & TV</a></Link>
+							<Link href="/MyLibrary"><a onClick={(e:any)=>handleClick(e)}  className={`item ${activeClass.library && "activeNavbar"}`}>My Library</a></Link>
 						</div>
 					</div>
 					<div className="hidden md:flex items-center space-x-5 ">
-					  <Link href="/account"><a  className="py-2 px-2 font-medium 
-						 text-gray-400 rounded outline hover:bg-[#ADDDD0] hover:text-black hover:scale-105
-						  transition duration-300">Account</a></Link>
+					  <Link href="/account"><a onClick={(e: any) => handleClick(e)} className={`py-2 px-2 font-medium 
+					   ${activeClass.account && "border-4 border-[#ADDDD0] text-gray-100"}
+						 text-gray-400 rounded border-2 border-[#ADDDD0]  hover:bg-[#ADDDD0] hover:text-black hover:scale-105
+						  transition duration-300`}>Account</a></Link>
 					 
 					</div>
 					<div className=" md:hidden flex items-center">

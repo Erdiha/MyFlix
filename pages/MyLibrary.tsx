@@ -11,12 +11,11 @@ function MyLibrary() {
      const [displayModal, setDisplayModal] = useRecoilState(movieState);
     const [getMovie, setMovie] = useRecoilState(movieID);
   return (
-   
           <div className='relative h-screen w-screen bg-gradient-to-t from-[rgb(173,221,208)] to-black flex flex-col '>
           
           <>
               <Header />
-          <h1 className='p-5 absolute top-[8rem] md:top-[10rem] md:p-10
+          <h1 className='p-5 absolute top-[7rem] md:top-[8rem] md:p-10
            text-white text-xl ml-[4rem] fotn bold md:text-[2rem]'>My Library</h1>
           {
               lib?.length > 0 ? (

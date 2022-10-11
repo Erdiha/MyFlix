@@ -204,7 +204,8 @@ export const navItemSelection = atom({
   default: {
     home: false,
     library: false,
-    movies:false
+    movies: false,
+    account:false
   }
 })
 
