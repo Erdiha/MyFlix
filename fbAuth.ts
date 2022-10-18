@@ -9,13 +9,13 @@ import {getFirestore} from 'firebase/firestore'
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDQ0iSF9maf4kS_8hfz0Hn3g1lwrbr7aJg",
-  authDomain: "myflix-c2a96.firebaseapp.com",
-  projectId: "myflix-c2a96",
-  storageBucket: "myflix-c2a96.appspot.com",
-  messagingSenderId: "470627509934",
-  appId: "1:470627509934:web:bca878d02003c230f62f3f",
-  measurementId: "G-9LM8P4PJX1"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASED_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASED_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASED_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASED_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASED_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASED_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
